@@ -1,0 +1,95 @@
+<!-- 
+* File Name: views/contact.ejs
+* Name: Inderjit Singh Bedi 
+* Student Id: 301313264
+* Date: 11/02/2023
+ -->
+<section class="page-section" id="contact">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Contact Me</h2>
+            <h4 class="section-heading ">
+                <i class="fa-solid fa-user"></i> Inderjit Singh Bedi
+                <br>
+                <br>
+                <i class="fa-solid fa-phone"></i> +1 (905) 587-2031
+            </h4>
+            <h3 class="section-subheading text-muted">Transforming businesses with the power of Full Stack development.
+            </h3>
+        </div>
+        <form name="contactForm" id="contactForm" action="">
+            <div class="row align-items-stretch mb-5">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <!-- Name input-->
+                        <input class="form-control" name="name" id="name" type="text" placeholder="Your Name *"
+                            data-sb-validations="required" />
+                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                    </div>
+                    <div class="form-group">
+                        <!-- Email address input-->
+                        <input class="form-control" name="email" id="email" type="email" placeholder="Your Email *"
+                            data-sb-validations="required,email" />
+                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                    </div>
+                    <div class="form-group mb-md-0">
+                        <!-- Phone number input-->
+                        <input class="form-control" name="phone" id="phone" type="tel" placeholder="Your Phone *"
+                            data-sb-validations="required" />
+                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group form-group-textarea mb-md-0">
+                        <!-- Message input-->
+                        <textarea class="form-control" name="message" id="message" placeholder="Your Message *"
+                            data-sb-validations="required"></textarea>
+                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Submit success message-->
+            <div class="d-none" id="submitSuccessMessage">
+                <div class="text-center text-white mb-3">
+                    <div class="fw-bolder">Form submission successful!</div>
+                </div>
+            </div>
+            <!-- Submit error message-->
+            <div class="d-none" id="submitErrorMessage">
+                <div class="text-center text-danger mb-3">Error sending message!</div>
+            </div>
+            <!-- Submit Button-->
+            <div class="text-center">
+                <button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Send
+                    Message
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+<script>
+
+    const apiUrl = 'https://script.google.com/macros/s/AKfycbxSaerc2_v74voYdAJSGPAUBMUwL2rWij8GPAKtvLf2usIHdA8fSqQTxnj2aF95sNdK/exec'
+    const form = document.forms['contactForm']
+    form.addEventListener('submit', $event => {
+        console.log($event)
+        if ($event) {
+            fetch(apiUrl, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    console.log('Success!', response)
+                    document.getElementById("submitSuccessMessage").classList.remove("d-none");
+                    setTimeout(() => {
+                        document.location = '/home';
+                    }, 1000);
+                })
+                .catch(error => {
+                    document.getElementById("submitErrorMessage").classList.remove("d-none");
+                    console.error('Error!', error.message)
+                })
+            $event.preventDefault()
+        }
+    });
+
+</script>
