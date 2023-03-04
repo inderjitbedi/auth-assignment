@@ -4,12 +4,11 @@
 * Student Id: 301313264
 * Date: 11/02/2023
 */
-
-const app = require('./app');
+const app = require('./server/config/app');
 const debug = require('debug')('PortfolioAssignment:server');
 const http = require('http');
 
-let port = normalizePort(process.env.PORT || '3000');
+let port = normalizePort(process.env.PORT || '3001');
 
 app.set('port', port);
 
@@ -20,6 +19,7 @@ server.listen(port);
 server.on('listening', () => {
     let address = server.address();
     let binding = typeof address === 'string' ? 'pipe ' + address : 'port ' + address.port;
+    console.log('Listening on ' + binding);
     debug('Listening on ' + binding);
 });
 

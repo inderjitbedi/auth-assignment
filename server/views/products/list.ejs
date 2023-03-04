@@ -1,0 +1,145 @@
+<!-- file name : list.ejs
+   Name : Inderjit Bedi
+   Student ID : 301313264
+	Date : 03-03-2023 -->
+
+
+<!-- include header with options in main page -->
+<%- include ('../partials/header.ejs') %> 
+
+ <!-- add navigation bar in header -->
+<%- include ('../partials/main_nav.ejs') %> 
+
+
+<!-- Hiome page with image and name -->
+
+<h1 class="list-title">
+    Show all the contacts
+    </h1>
+
+    <main class = "container">
+        <div class = "list-show">
+            <div class = "offset-md-1 col md-10">
+                <br>
+                <% if(typeof displayname == 'string' && displayname == "Admin") {%>
+                    <a href="/productList/add" class="btn btn-primary" role="button">
+                        <i class="fas fa-plus-circle"></i>
+                        <!-- Add a product -->
+                        Add a contact
+                    </a>
+                    <%}%>
+
+                <br>
+                <br>
+                <table class="table table-bordered table-striped table-hover" style="background-color:rgb(217, 214, 214);">
+                    
+                        <% if(typeof displayname == 'string' && displayname == "Admin") {%>
+                            <th class = "text-center col-1">
+                                
+                            </th>
+                            <th class = "text-center col-1">
+                                
+                            </th>
+                            <%}%>
+                        
+                    </tr> -->
+
+
+                    <tr>
+                        <th class = "text-center col-2">
+                            Person Name
+                        </th>
+                        <th class = "text-center col-2">
+                            Contact Number
+                        </th>
+                        <th class = "text-center col-1">
+                            Email Id
+                        </th>
+                        <% if(typeof displayname == 'string' && displayname == "Admin") {%>
+                            <th class = "text-center col-1">
+                                Edit
+                            </th>
+                            <th class = "text-center col-1">
+                                Delete
+                            </th>
+                            <%}%>
+                        
+                    </tr>
+
+                    
+                    <!-- <% for (let index = 0; index<ProductList.length; index ++) { console.log(ProductList[index]._id)%>
+                     
+                                <%= ProductList[index].product_name %>
+                           
+                                <%= ProductList[index].brand_name %>
+                           
+                        
+
+                                <%= ProductList[index].color %>
+                          
+                                <%= ProductList[index].price %>
+                            </td>
+
+                            <% if(typeof displayname == 'string' && displayname == 'Admin') {%>
+                                <%=ProductList[index]._id%>
+                            <%=ProductList[index]._id%>
+                                   
+    
+                                <%}%>
+                            
+                            
+                      
+                        
+                    <% } %>  -->
+
+            <!-- add sorting to display the contact list in alphabatical order  -->
+
+                    <% ProductList.sort((a, b) => (a.person_name || "").toString().localeCompare((b.person_name || "").toString())).forEach(person => { %>
+
+                        <tr>
+                            <td class="text-center col-2">
+                                <%= person.person_name %>
+                            </td>
+                        
+                        
+                            <td class="text-center col-2">
+                                <%= person.contact_number %>
+                            </td>
+                        
+                            <td class="text-center col-1">
+                                <%= person.email_id %>
+                            </td>
+                        
+
+                            <% if(typeof displayname == 'string' && displayname == 'Admin') {%>
+                                <td class="text-center col-1"> 
+                                    <a href="/productList/edit/<%=person._id%>" class="btn btn-primary">
+                                        <i class="fas fa-pencil alt"></i>
+                                    </a>
+                                </td>
+    
+                                <td class="text-center col-1"> 
+                                    <a href="/productList/delete/<%=person._id%>" class="btn btn-danger">
+                                        <i class="fas fa-trash alt"></i>
+                                    </a>
+                                </td>
+    
+                                <%}%>
+                        </tr>
+                        
+                <% }) %>
+
+                </table>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+      
+      </main>
+    
+
+
+
+
+    <%- include ('../partials/footer.ejs') %>     

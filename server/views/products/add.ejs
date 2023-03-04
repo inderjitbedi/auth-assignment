@@ -1,0 +1,59 @@
+<!-- file name : add.ejs
+   Name : Inderjit Bedi
+   Student ID : 301313264
+	Date : 03-03-2023 -->
+
+
+<!-- include header with options in main page -->
+<%- include ('../partials/header.ejs') %> 
+
+ 
+
+<div class="add">
+    <div class = "row">
+        <div class="offset-md-3 col-md-6">
+            <h1 class="add-title">Add new product</h1>
+            <form class ="form" method = "POST">
+                <div class = "form-group my-1">
+                    <label for="nameTextField">Person Name</label>
+                    <input type="text" 
+                    class="form-control my-1" 
+                    id="person_name" 
+                    placeholder="Enter the person name" 
+                    name="person_name" required>
+                </div>
+
+                <div class = "form-group my-3">
+                    <label for="contactTextField">Contact Number</label>
+                    <input type="number" 
+                    class="form-control my-1" 
+                    id="contact_number" 
+                    placeholder="Enter the contact number" 
+                    name="contact_number" required>
+                </div>
+
+                <div class = "form-group my-3">
+                    <label for="emailTextField">Email Id</label>
+                    <input type="email" 
+                    class="form-control my-1" 
+                    id="email_id" 
+                    placeholder="Enter the email id" 
+                    name="email_id" required>
+                </div>
+
+
+                <button class="add-btn" type="submit">Submit</button>
+                <button class="acancel-btn">
+                    <a href="/productList">Cancel</a>
+                    
+                </button>
+                
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+

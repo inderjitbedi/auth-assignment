@@ -1,0 +1,58 @@
+<!-- 
+* File Name: views/login.ejs
+* Name: Inderjit Singh Bedi 
+* Student Id: 301313264
+* Date: 27/02/2023
+ -->
+<%- include ('partials/header.ejs') %> 
+<%- include ('partials/navigation-bar.ejs') %> 
+<section class="page-section" id="main-form-div">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Login</h2>
+        </div>
+        <form class="form" name="loginForm" id="loginForm"  method="POST">
+            <div class="row align-items-stretch mb-5">
+                <div class="col-md-3"></div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <!-- Email address input-->
+                        <input class="form-control" name="email" id="email" type="email" placeholder="Email *"
+                            data-sb-validations="required,email" />
+                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                    </div>
+                    <div class="form-group mb-md-0">
+                        <!-- Password input-->
+                        <input class="form-control" name="password" id="password" type="password" placeholder="Password *"
+                            data-sb-validations="required" />
+                        <div class="invalid-feedback" data-sb-feedback="password:required">A password number is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+
+            </div>
+            <!-- Submit success message-->
+            <div class="d-none" id="submitSuccessMessage">
+                <div class="text-center text-white mb-3">
+                    <div class="fw-bolder">Form submission successful!</div>
+                </div>
+            </div>
+            <!-- Submit error message-->
+            <div class="d-none" id="submitErrorMessage">
+                <div class="text-center text-danger mb-3">Error sending message!</div>
+            </div>
+            <!-- Submit Button-->
+            <div class="text-center">
+                <button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Login
+                </button>
+                <br>
+                <a class="mt-5" href="/register">Don't have an account? Register here</a>
+            </div>
+       
+        </form>
+    </div>
+</section>
+<%- include ('partials/footer.ejs') %> 
